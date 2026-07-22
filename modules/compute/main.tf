@@ -8,6 +8,14 @@ resource "aws_launch_template" "launch_template" {
       Name = "${var.name}-app"
     }
   }
+  user_data = base64encode(<<-EOF
+  #!/bin/bash
+  apt-get update -y
+  apt-get install -y nginx
+  systemctl start nginx
+  systemctl enable nginx
+EOF
+)
 }
 
 resource "aws_autoscaling_group" "asg" {

@@ -30,7 +30,7 @@ module "compute" {
   source = "./modules/compute"
   name   = "sre-monitoring"
 
-  image_id                = "ami-placeholder"
+  image_id                = "ami-0b6d9d3d33ba97d99"
   vpc_security_group_ids  = [aws_security_group.security_group.id]
   subnet_ids              = module.vpc.private_subnet_ids
 
